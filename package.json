@@ -2,12 +2,22 @@
   "name": "apple-notes-exporter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cli.js",
+  "bin": {
+    "apple-notes-exporter": "dist/cli.js"
+  },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "packageManager": "pnpm@10.12.4"
+  "packageManager": "pnpm@10.12.4",
+  "devDependencies": {
+    "@types/node": "^25.0.7",
+    "typescript": "^5.9.3"
+  }
 }
