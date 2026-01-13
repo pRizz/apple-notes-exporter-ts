@@ -1,13 +1,44 @@
 {
   "name": "apple-notes-exporter",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A library and CLI for exporting Apple Notes folders to HTML files via AppleScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "apple-notes-exporter": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "vendor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pRizz/apple-notes-exporter-ts.git"
+  },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "apple",
+    "notes",
+    "export",
+    "applescript",
+    "macos"
+  ],
+  "author": "Peter Ryszkiewicz",
   "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "os": [
+    "darwin"
+  ],
   "packageManager": "pnpm@10.12.4"
 }
