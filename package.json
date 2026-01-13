@@ -15,6 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/pRizz/apple-notes-exporter-ts.git"
   },
+  "homepage": "https://github.com/pRizz/apple-notes-exporter-ts#readme",
+  "bugs": {
+    "url": "https://github.com/pRizz/apple-notes-exporter-ts/issues"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -26,7 +30,12 @@
     "notes",
     "export",
     "applescript",
-    "macos"
+    "macos",
+    "backup",
+    "html",
+    "cli",
+    "icloud",
+    "notes-app"
   ],
   "author": "Peter Ryszkiewicz",
   "license": "MIT",

@@ -218,6 +218,86 @@ On first run, macOS will prompt you to grant automation permissions. You can als
 2. Go to **Privacy & Security** > **Automation**
 3. Enable **Notes** access for **Terminal** (or your application)
 
+## Example Output
+
+Each note is exported as an HTML fragment (not a full HTML document). The output starts directly with `<div>` tags containing the note's rich text content:
+
+```html
+<div><h1>My Note Title</h1></div>
+<div><br></div>
+<div>This is the content of my note with <b>formatting</b> preserved.</div>
+<div><br></div>
+<div>
+  <ul>
+    <li>Bullet points work</li>
+    <li>So do checklists</li>
+  </ul>
+</div>
+```
+
+**Note:** There is no `<html>`, `<head>`, or `<body>` wrapper. This is the raw HTML body content as returned by the Notes app. If you need a full HTML document, you'll need to wrap the content yourself.
+
+## Troubleshooting
+
+### "Notes is not allowed to be automated"
+
+You need to grant automation permissions:
+1. Open **System Settings** > **Privacy & Security** > **Automation**
+2. Find your terminal app (Terminal, iTerm, VS Code, etc.)
+3. Enable the toggle for **Notes**
+
+### "No folders found"
+
+- Ensure you have at least one folder in the Notes app
+- Check that Notes is not in a broken state (try opening Notes manually)
+- Verify automation permissions are granted
+
+### Notes app keeps opening/closing
+
+This is normal behavior. The AppleScript needs to communicate with Notes, which may briefly activate the app.
+
+### Export is slow
+
+Large folders with many notes take time to export. The script processes notes sequentially to avoid overwhelming the Notes app.
+
+### "Could not find folder named: X"
+
+- Check the exact folder name (case-sensitive)
+- Use `apple-notes-exporter list` to see available folders
+- If the folder is in a specific account, use the `Account:Folder` format
+
+## Related Projects
+
+- [apple-notes-exporter-rs](https://github.com/pRizz/apple-notes-exporter-rs) - Rust implementation of this tool
+- [apple-notes-exporter](https://github.com/pRizz/apple-notes-exporter) - The underlying AppleScript
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Clone with submodules
+git clone --recurse-submodules https://github.com/pRizz/apple-notes-exporter-ts.git
+cd apple-notes-exporter-ts
+
+# Install dependencies
+pnpm install
+
+# Build
+pnpm build
+
+# Run locally
+node dist/cli.js list
+```
+
 ## License
 
 MIT
